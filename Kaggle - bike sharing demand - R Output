@@ -1,0 +1,115 @@
+ train <- read.csv("~/Downloads/train.csv")
+>   View(train)
+> install.packages("lubridate")
+also installing the dependency ‘plyr’
+
+trying URL 'http://cran.rstudio.com/bin/macosx/mavericks/contrib/3.1/plyr_1.8.1.tgz'
+Content type 'application/x-gzip' length 867981 bytes (847 Kb)
+opened URL
+==================================================
+downloaded 847 Kb
+
+trying URL 'http://cran.rstudio.com/bin/macosx/mavericks/contrib/3.1/lubridate_1.3.3.tgz'
+Content type 'application/x-gzip' length 652533 bytes (637 Kb)
+opened URL
+==================================================
+downloaded 637 Kb
+
+
+The downloaded binary packages are in
+	/var/folders/cg/z2vjs22s3z5fl_ntmhry3tkh0000gn/T//Rtmp5QwoXb/downloaded_packages
+> install.packages("randomForest")
+trying URL 'http://cran.rstudio.com/bin/macosx/mavericks/contrib/3.1/randomForest_4.6-10.tgz'
+Content type 'application/x-gzip' length 168747 bytes (164 Kb)
+opened URL
+==================================================
+downloaded 164 Kb
+
+
+The downloaded binary packages are in
+	/var/folders/cg/z2vjs22s3z5fl_ntmhry3tkh0000gn/T//Rtmp5QwoXb/downloaded_packages
+> train.lm = lm(count ~ season + holiday + workingday + weather + temp + atemp + humidity + windspeed + casual + registered, data = train)
+> summary(train.lm)
+
+Call:
+lm(formula = count ~ season + holiday + workingday + weather + 
+    temp + atemp + humidity + windspeed + casual + registered, 
+    data = train)
+
+Residuals:
+       Min         1Q     Median         3Q        Max 
+-4.963e-11 -1.700e-14  1.000e-15  1.700e-14  3.671e-11 
+
+Coefficients:
+              Estimate Std. Error    t value Pr(>|t|)    
+(Intercept) -1.761e-13  4.284e-14 -4.112e+00 3.96e-05 ***
+season      -2.061e-13  6.947e-15 -2.967e+01  < 2e-16 ***
+holiday      2.868e-13  4.466e-14  6.423e+00 1.39e-10 ***
+workingday   3.457e-13  1.836e-14  1.883e+01  < 2e-16 ***
+weather      7.914e-14  1.261e-14  6.276e+00 3.60e-10 ***
+temp        -4.181e-14  5.498e-15 -7.605e+00 3.09e-14 ***
+atemp       -1.755e-14  5.059e-15 -3.468e+00 0.000526 ***
+humidity     1.139e-14  4.800e-16  2.372e+01  < 2e-16 ***
+windspeed    6.567e-16  9.622e-16  6.830e-01 0.494933    
+casual       1.000e+00  2.142e-16  4.668e+15  < 2e-16 ***
+registered   1.000e+00  5.919e-17  1.689e+16  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 7.49e-13 on 10875 degrees of freedom
+Multiple R-squared:      1,	Adjusted R-squared:      1 
+F-statistic: 6.367e+31 on 10 and 10875 DF,  p-value: < 2.2e-16
+
+> predict(help)
+Error in UseMethod("predict") : 
+  no applicable method for 'predict' applied to an object of class "function"
+> help(predict)
+> Prediction <- predict(train.lm, train)
+> Testing <- data.frame(datetime = train$datetime, count = Prediction)
+> View(Testing)
+> test <- read.csv("~/Downloads/test.csv")
+>   View(test)
+> test.lm = lm(count ~ season + holiday + workingday + weather + temp + atemp + humidity + windspeed + casual + registered, data = test)
+Error in eval(expr, envir, enclos) : object 'count' not found
+> predictionTest <- predict(train.lm, test)
+Error in eval(expr, envir, enclos) : object 'casual' not found
+> test.lm <- lm(count ~ season + holiday + workingday + weather + temp + atemp + humidity )
+Error in eval(expr, envir, enclos) : object 'count' not found
+> test.lm <- lm(count ~ season + holiday + workingday + weather + temp + atemp + humidity + wind + speed, data = train)
+Error in eval(expr, envir, enclos) : object 'wind' not found
+> test.lm <- lm(count ~ season + holiday + workingday + weather + temp + atemp + humidity + windspeed + speed, data = train)
+Error in eval(expr, envir, enclos) : object 'speed' not found
+> test.lm <- lm(count ~ season + holiday + workingday + weather + temp + atemp + humidity + windspeed, data = train)
+> summary(test.lm)
+
+Call:
+lm(formula = count ~ season + holiday + workingday + weather + 
+    temp + atemp + humidity + windspeed, data = train)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-335.81 -102.67  -31.95   66.44  677.02 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 135.79052    8.71016  15.590  < 2e-16 ***
+season       22.75882    1.42662  15.953  < 2e-16 ***
+holiday      -9.15872    9.27009  -0.988 0.323181    
+workingday   -1.14953    3.31527  -0.347 0.728795    
+weather       5.93872    2.61924   2.267 0.023389 *  
+temp          1.84737    1.14210   1.618 0.105796    
+atemp         5.63120    1.05057   5.360 8.49e-08 ***
+humidity     -3.05684    0.09262 -33.003  < 2e-16 ***
+windspeed     0.77762    0.19999   3.888 0.000102 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 155.8 on 10877 degrees of freedom
+Multiple R-squared:  0.2609,	Adjusted R-squared:  0.2604 
+F-statistic:   480 on 8 and 10877 DF,  p-value: < 2.2e-16
+
+> TestPrediction <- predict(test.lm, test)
+> TestSubmission <- data.frame(test$datetime, count = TestPrediction)
+> View(TestSubmission)
+> write.csv(TestSubmission, file = "testSubmission.csv", row.names = FALSE)
+> 
