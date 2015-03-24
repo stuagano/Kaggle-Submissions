@@ -1,0 +1,22 @@
+{
+    "contents" : "",
+    "created" : 1427212642192.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "3CF9B5F7",
+    "lastKnownWriteTime" : 2317438866862112768,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "caption" : "testsubmisssion",
+        "contentUrl" : "content?title=testsubmisssion&file=6c123f7806d54033b2da6016efffe186.htm",
+        "displayedObservations" : 1000,
+        "displayedVariables" : 2,
+        "totalObservations" : 100000,
+        "variables" : 2
+    },
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}

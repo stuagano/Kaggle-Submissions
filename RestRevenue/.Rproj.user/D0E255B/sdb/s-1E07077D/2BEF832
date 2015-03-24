@@ -1,0 +1,17 @@
+{
+    "contents" : "#Kaggle Submission for Restaurant Revenue Prediction #\n\n## Lm function where the only factor remaining was City.Group \n## others had to drop because of lack of continuity to final model. \nlm <- lm(revenue ~ City.Group + P1 + P2 + P3 + P4 +P5 +P6+P7+P8+P9+P10+P11+P12+P13+P14+P15+P16+\n           P17+P18+P19+P20+P21+P22+P23+P24+P25+P26+P27+P28+P29+\n           P30+P31+P32+P33+P34+P35+P36+P37, data = train.3)\nsummary (lm)\n\npredictionlm <- predict(lm, test2, se.fit = FALSE, level = .90)\ntestsubmisssion <- data.frame (test2$Id, count = predictionlm)\nView(testsubmisssion)\n\nwrite.csv(testsubmisssion, file = \"testSubmission.csv\", row.names = FALSE)",
+    "created" : 1427213019297.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3967670473",
+    "id" : "2BEF832",
+    "lastKnownWriteTime" : 1427213205,
+    "path" : "~/Documents/R_Projects/RestRevenue/RestRevenue.R",
+    "project_path" : "RestRevenue.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

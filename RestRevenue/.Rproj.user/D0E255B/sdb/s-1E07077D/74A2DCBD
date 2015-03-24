@@ -1,0 +1,22 @@
+{
+    "contents" : "",
+    "created" : 1427211254550.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "74A2DCBD",
+    "lastKnownWriteTime" : 12998624572419584,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "caption" : "plm",
+        "contentUrl" : "content?title=plm&file=aecda725667b4a1cace72d123a67b1c8.htm",
+        "displayedObservations" : 137,
+        "displayedVariables" : 43,
+        "totalObservations" : 137,
+        "variables" : 43
+    },
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}
